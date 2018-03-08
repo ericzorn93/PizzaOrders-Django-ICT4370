@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+<br>
+<div class="container">
+    <h1>Check Out Our Delicious Mouth Watering Pizzas!</h1>
+
+    <br>
+
+    <h5><em>*All Toppings are an extra fifty cents per topping</em></h5>
+
+    <br>
+    <h1>Pizzas</h1>
+    <ul class="list-group">
+        {% for item in pizzas %}
+        <br>
+        <li class="list-group-item list-group-item-action">{{ item }}</li>
+        {% endfor %}
+    </ul>
+
+    <br>
+
+    <h1>Sides</h1>
+    <ul class="list-group">
+        {% for side in sides %}
+        <br>
+        <li class="list-group-item list-group-item-action">{{ side }}</li>
+        {% endfor %}
+    </ul>
+
+
+    <br>
+
+    <h1>Beverages</h1>
+    <ul class="list-group">
+        {% for drink in drinks %}
+        <br>
+        <li class="list-group-item list-group-item-action">{{ drink }}</li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+{% endblock %}

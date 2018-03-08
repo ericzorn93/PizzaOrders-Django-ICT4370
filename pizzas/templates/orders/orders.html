@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+<br>
+<div class="container">
+
+    <br>
+
+    <h1 class="text-center"><strong>Hi {{ user }}!</strong> <span class="text-success">Welcome to Work!</span></h1>
+
+    {% if all_toppings|length >= 1 %}
+        <h3 class="text-center text-warning"><em>Here are the open orders below...</em></h3>
+    {% endif %}
+
+    <br>
+
+    {% block orders %}
+    <ul class="list-group header" style="list-style: none">
+        {% for topping in all_toppings %}
+            <br>
+            <li><a class="list-group-item list-group-item-action active" href="/specific_order/{{ topping.pk }}/">Order: {{ topping.pk }} | Order: {{ topping.pizza }}</a></li>
+            <br>
+            <b><p>Order {{ topping.pk }} From: {{ topping.name }}</p></b>
+        {% endfor %}
+
+        {% if all_toppings|length <= 0 %}
+            <br><br>
+            <h1 class="text-danger" id="noCurrentOrders"><em style="text-decoration: underline">***THERE ARE NO CURRENT ORDERS AT THE MOMENT</em></h1>
+        {% endif %}
+    </ul>
+    {% endblock %}
+</div>
+
+{% endblock %}

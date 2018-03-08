@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+    {% if request.user.is_superuser %}
+        <br><br>
+        <div class="container">
+            <h1>Personalized Order {{ order_id }}</h1>
+            <br>
+            <div class="jumbotron">
+                <h2>Order ID: {{ order_id }}</h2>
+                <h2>Customer Name: {{ name }}</h2>
+                <h2>Pizza Type/Toppings: {{ topping }}</h2>
+                <br>
+
+                <button type="button" id="displayButtonToggle" class="btn btn-primary">Click to Display Order Options &#8681;</button>
+
+                <!-- Order Button Wrapper -->
+                <div id="orderButtonWrapper" style="display: none;">
+                    <a href="/orders/" style="color: white;"><button class="btn btn-success">Back to Orders</button></a>
+
+                    {% if user.is_superuser %}
+                    <form action="" method="post" style="display: inline-block;">
+                        {% csrf_token %}
+                        <button class="btn btn-danger" type="submit" value="delete">Fulfill/Cancel Order</button>
+                    </form>
+                    <button class="btn btn-warning" type="button" value="edit" id="editOrder">Edit Order</button>
+                    {% endif %}
+                </div>
+                <!-- End Order Button Wrapper -->
+
+            </div>
+        </div>
+    {% else %}
+        <br><br>
+        <div class="container">
+            <div class="jumbotron">
+                <h1 class="text-danger">You Are Not Authorized to View This Page!</h1>
+                <br><br><br>
+                <em><strong><h2>Please View <a href="/">Login</a> Page</h2></strong></em>
+            </div>
+        </div>
+    {% endif %}
+
+
+    {# Loading JavaScript Files #}
+    <!-- jQuery CDN -->
+{#    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>#}
+
+    {% load static %}
+    <!-- Custom JS -->
+    <script src="{% static 'js/specific_order.js' %}" type="text/javascript"></script>
+
+    <script>
+        // Edit Order Button
+        const editOrderButton = document.getElementById("editOrder");
+
+        function editOrderReroute() {
+            window.location = `/edit_order/` + {{ order_id }};
+            {#console.log("Hello");#}
+        }
+
+        editOrderButton.addEventListener('click', editOrderReroute);
+    </script>
+
+{% endblock %}

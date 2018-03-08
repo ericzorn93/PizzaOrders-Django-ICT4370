@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+
+{% block body %}
+    <div class="container">
+        <br>
+        <h1>Hello, <em>{{ current_user }}</em></h1>
+
+        <div class="container">
+            <h4>The current date is <em>{{ current_date }}</em></h4>
+            <h4>The current time is <em>{{ current_time }}</em></h4>
+        </div>
+
+        <br>
+        <form method="post" action="/">
+            {% csrf_token %}
+            <button class="btn btn-danger" type="submit">Logout</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+
+<br>
+<div class="container">
+    <h1 style="font-family: 'Pacifico', cursive;">About Us</h1>
+
+    <div class="col-lg-6 left">
+        <img src="{% static 'img/interior_rest_one.jpg' %}" alt="Interior Restaurant" class="img-fluid" width="500">
+        <br><br>
+        <img src="{% static 'img/pizza.jpg' %}" alt="Pizza" class="img-fluid" width="500">
+        <br><br>
+        <img src="{% static 'img/brick_oven.jpg' %}" alt="Brick Oven" class="img-fluid" width="500">
+    </div>
+    <div class="col-ls-6">
+        <h2>Where Are We Located?</h2>
+        <p>
+            We are located in New York City, near Times Square on West 43rd Street. This is the perfect location if you are
+            walking around the city in Midtown, visiting for a Broadway Show, or any other occasion.
+        </p>
+        <hr>
+        <h2>What Type of Cuisine Do We Serve?</h2>
+        <p>
+            Eric Zorn's Pizzeria has been serving up the finest New York style pizza pies since the early 1980's. We have
+            a pie for everyone. We use only the finest Italian ingredients that are imported from Italy every day. Our most
+            famous pie is definitely the standard tomato pie that has fresh mozzarella, homemade tomato sauce, and basil. The pie
+            is topped with our fresh extra-virgin olive oil.
+        </p>
+        <hr>
+        <h2>Contact Information</h2>
+          <ol>
+              <li><a href="#">Phone Number: 212-432-1232</a></li>
+              <li><a href="#">Address: 12, 42nd Street, Manhattan, NY</a></li>
+              <li><a href="#">Email: ericzornpizza@ezpizza.com</a></li>
+          </ol>
+    </div>
+
+</div>
+
+{% endblock %}

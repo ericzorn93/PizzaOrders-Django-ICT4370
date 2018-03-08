@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+<div class="container">
+
+    <br>
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-3">Welcome to Eric Zorn's Pizzeria</h1>
+            <hr class="my-4">
+            <h4 class="lead">{{ intro_description }}</h4>
+        </div>
+    </div>
+
+    <br>
+
+
+    <br><br>
+    <form action="" method="post" class="form-group">
+        {% csrf_token %}
+        {% if user.is_authenticated %}
+            {{ form.as_p }}
+            {{ toppings_form.as_p }}
+            <input type="submit" value="Submit" class="btn btn-primary">
+        {% else %}
+            <h1 id="loginError"><strong>Please Login to Enter Order</strong></h1>
+        {% endif %}
+    </form>
+</div>
+
+<script type="text/javascript">
+    var inputs = document.querySelectorAll('input');
+    var selects = document.querySelectorAll('select');
+    for (var i = 0; i < inputs.length; i++) {
+        if (inputs[i].value !== "Submit") {
+            inputs[i].classList.add("form-control");
+        }
+    }
+
+    for (var j = 0; j < selects.length; j++) {
+            selects[j].classList.add("form-control");
+    }
+</script>
+
+{% endblock %}

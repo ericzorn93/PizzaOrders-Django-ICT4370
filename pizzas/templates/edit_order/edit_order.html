@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+    <div class="container">
+        <br>
+        <h1>Edit Order</h1>
+        <hr>
+
+        <br>
+        {% if user.is_authenticated %}
+        <h3 class="text-warning"><strong>ID: {{ order_id }}, Name: {{ name }}, Order: {{ topping }}</strong></h3>
+        <form action="" method="post" class="form-group">
+            {% csrf_token %}
+            {{ edit_form }}
+            <br>
+            <button class="btn btn-success" type="button" id="backOrders">Back to Orders</button>
+            <button class="btn btn-warning" type="submit">Edit Order</button>
+        </form>
+        {% endif %}
+    </div>
+
+
+    <script>
+        const inputs = document.querySelectorAll('input');
+        const backOrders = document.getElementById("backOrders");
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].classList.add('form-control');
+        }
+
+        backOrders.addEventListener('click', function(ev) {
+            window.location = "/orders/";
+        });
+    </script>
+{% endblock %}
